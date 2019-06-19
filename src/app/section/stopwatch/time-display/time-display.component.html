@@ -1,0 +1,16 @@
+<div>
+  <div class="time-text">
+    <span>
+    {{min}} : {{sec}}
+  </span>
+   : {{ms}}
+  </div>
+</div>
+
+{{pageToggleService.routingCount}}
+
+<button class="start-btn" (click)="timeStart()">Start</button>
+
+<button class="stop-btn" (click)="timeStop()">Stop</button>
+
+<button class="reset-btn" (click)="timeReset()">Reset</button>
