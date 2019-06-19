@@ -29,14 +29,22 @@ export class TimeDisplayComponent implements OnInit {
   }
 
   timeStart() {
-    this.pageToggleService.plusCount();
 
     this.timeStop();
     this.timeInterval = setInterval(() => {
+      if ( this.ms > 100 ) {
+        this.ms = 0;
+        this.sec++;
+      }
+
+      if ( this.sec > 60) {
+        this.sec = 0;
+        this.min++;
+      }
       this.ms++;
     }
     ,10)
-    clearInterval()
+
   }
 
   timeStop() {
@@ -46,35 +54,36 @@ export class TimeDisplayComponent implements OnInit {
   timeReset() {
     this.timeStop();
     this.ms = 0;
+    this.sec = 0;
   }
-
-  // ngOnChanges(changes: SimpleChange) {
-  //   console.log(changes);
-  //   for(let propName in changes) {
-  //     if(propName == 'inputData') {
-
-  //       switch(changes[propName].currentValue) {
-  //         case 'start':
-  //         this.timeStart();
-  //         break;
-
-  //         case 'stop':
-  //         this.timeStop();
-  //         break;
-
-  //         case 'reset':
-  //           this.timeReset();
-  //           break;
-
-  //       }
-  //     }
-  //   }
-  // }
 
   ngOnInit() {
-
-
-
+    console.log('ng on init')
   }
+
+  ngDoCheck() {
+    console.log('ng do check')
+  }
+
+  ngAfterContentInit() {
+    console.log('ng after content init')
+  }
+
+  ngAfterContentChecked() {
+    console.log('ng after content checked')
+  }
+
+  ngAfterViewInit() {
+    console.log('ng after view init')
+  }
+
+  ngAfterViewChecked() {
+    console.log('ng after view checked')
+  }
+
+  ngOnDestroy() {
+    console.log('destroy')
+  }
+
 
 }
